@@ -2,7 +2,8 @@
 
 This template repository can be used as a starting point to develop custom 
 plugins for the ZenML Hub, which enables you to share your ZenML code with the
-community and make it importable via `from zenml.hub.<plugin_name> import ...`.
+community and make it importable via 
+`from zenml.hub.<username>.<plugin_name> import ...`.
 
 ## Plugin Development Process
 
@@ -16,12 +17,13 @@ Next, clone your new plugin repository so you can make changes locally.
 
 ### 2. Copy code into `src/`
 Copy the source code you want to share into the `src/` folder. Anything you put
-here can later be imported from `zenml.hub.<your_plugin_name>`. E.g., if you
-contribute a plugin `my_plugin` that defines a step `my_step` in `src/my_step.py` you can later import it via 
-`from zenml.hub.my_plugin.my_step import my_step`.
+here can later be imported from `zenml.hub.<your_username>.<your_plugin_name>`. 
+E.g., if `me` contributes a plugin `my_plugin` that defines a step `my_step` in 
+`src/my_step.py`, it can later be imported via
+`from zenml.hub.me.my_plugin.my_step import my_step`.
 
-If you have 
-multiple files that import each other, make sure to use relative imports.
+If you have multiple files that import each other, make sure to use relative 
+imports.
 
 ### 3. Update `requirements.txt`
 If your plugin depends on any packages other than `zenml` itself, make sure to
@@ -29,20 +31,25 @@ include these in the `requirements.txt` file. Also, if your plugin only works
 for certain versions of `zenml`, adjust the entry in `requirements.txt`
 accordingly to indicate which versions are supported.
 
-### 4. Update `README.md`
+### 5. Replace `logo.png`
+Next, delete `logo.png` and replace it with your own plugin logo.
+
+### 5. Update `README.md`
 Lastly, delete this `README.md` file and replace it with your own README that
 explains how your plugin can be used.
 
-### 5. Submit your plugin to the ZenML Hub
-After you have adjusted your plugin repository according to steps 2) to 4), push
-your changes back to GitHub. Then, run `zenml hub push -i` in your terminal to 
-start an interactive publishing process and provide the URL of your new plugin 
+### 6. Submit your plugin to the ZenML Hub
+After you have adjusted your plugin repository according to steps 2) to 5), push
+your changes back to GitHub. Then, run `zenml hub submit -i` in your terminal to 
+start an interactive publishing process. Provide the URL of your new plugin 
 repository when prompted to do so.
 
 ## Folder Structure
 
 Please make sure to preserve the overall folder structure that is suggested here:
 ```
+├── logo.png                        -- The plugin logo -> TODO: replace
+│
 ├── README.md                       -- The README of the plugin -> TODO: explain your plugin here
 │
 ├── requirements.txt                -- Package requirements of your plugin, needs to contain `zenml` -> TODO: update
